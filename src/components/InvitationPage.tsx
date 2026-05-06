@@ -8,16 +8,20 @@ import type { Guest } from "@/types/rsvp";
 const WEDDING_DATE = new Date("2026-06-13T18:00:00");
 const MAPS_URL = "https://maps.app.goo.gl/RhMK7Lg8gLvHmxhR9";
 
-const petals = Array.from({ length: 18 }, (_, i) => ({
-  id: i,
-  left: `${(i * 5.6) % 100}%`,
-  delay: `${(i * 0.55) % 10}s`,
-  duration: `${8 + (i * 0.4) % 7}s`,
-  size: `${8 + (i * 0.7) % 12}px`,
-  rotate: `${(i * 19.7) % 360}deg`,
-  drift: `${((i % 7) - 3) * 22}px`,
-  isGreen: i % 2 === 0,
-}));
+type Petal = { id: number; left: string; delay: string; duration: string; size: string; rotate: string; drift: string; isGreen: boolean; };
+
+function randomPetals(): Petal[] {
+  return Array.from({ length: 24 }, (_, i) => ({
+    id: i,
+    left: `${Math.random() * 100}%`,
+    delay: `${Math.random() * 12}s`,
+    duration: `${7 + Math.random() * 9}s`,
+    size: `${7 + Math.random() * 13}px`,
+    rotate: `${Math.random() * 360}deg`,
+    drift: `${(Math.random() - 0.5) * 260}px`,
+    isGreen: Math.random() > 0.5,
+  }));
+}
 
 function pad(n: number) {
   return String(n).padStart(2, "0");
@@ -64,6 +68,9 @@ const r = (delay?: number) =>
 
 export default function InvitationPage() {
   useScrollReveal();
+
+  const [petals, setPetals] = useState<Petal[]>([]);
+  useEffect(() => { setPetals(randomPetals()); }, []);
 
   const [attending, setAttending]   = useState<"yes" | "no" | null>(null);
   const [firstName, setFirstName]   = useState("");
