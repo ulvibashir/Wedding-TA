@@ -165,19 +165,19 @@ export default function InvitationPage() {
           <h2 className="section-title" {...r(1)}>Until We Say &ldquo;I Do&rdquo;</h2>
           <div className="countdown">
             <div className="cd-unit" {...r(2)}>
-              <div className="cd-flip"><span key={days}  className="cd-number d">{pad(days)}</span></div>
+              <div className="cd-flip"><span key={days}  className="cd-number d" suppressHydrationWarning>{pad(days)}</span></div>
               <span className="cd-label">Days</span>
             </div>
             <div className="cd-unit" {...r(3)}>
-              <div className="cd-flip"><span key={hours} className="cd-number h">{pad(hours)}</span></div>
+              <div className="cd-flip"><span key={hours} className="cd-number h" suppressHydrationWarning>{pad(hours)}</span></div>
               <span className="cd-label">Hours</span>
             </div>
             <div className="cd-unit" {...r(4)}>
-              <div className="cd-flip"><span key={mins}  className="cd-number m">{pad(mins)}</span></div>
+              <div className="cd-flip"><span key={mins}  className="cd-number m" suppressHydrationWarning>{pad(mins)}</span></div>
               <span className="cd-label">Minutes</span>
             </div>
             <div className="cd-unit" {...r(5)}>
-              <div className="cd-flip"><span key={secs}  className="cd-number s">{pad(secs)}</span></div>
+              <div className="cd-flip"><span key={secs}  className="cd-number s" suppressHydrationWarning>{pad(secs)}</span></div>
               <span className="cd-label">Seconds</span>
             </div>
           </div>
