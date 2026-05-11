@@ -79,13 +79,28 @@ body { background: var(--bg); font-family: 'Jost', sans-serif; color: var(--deep
   min-height: 100vh;
   display: flex; flex-direction: column; align-items: center; justify-content: center;
   text-align: center; padding: 60px 20px;
-  background: linear-gradient(180deg, #eef5f0 0%, var(--bg) 100%);
+  background-image: url('/cover.jpg');
+  background-size: cover;
+  background-position: center top;
   position: relative; overflow: hidden;
 }
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(238,245,240,0.40) 0%,
+    rgba(247,249,248,0.60) 55%,
+    rgba(247,249,248,0.80) 100%
+  );
+  z-index: 0;
+}
+.hero > * { position: relative; z-index: 1; }
 .hero::after {
   content: '';
   position: absolute; bottom: 0; left: 0; right: 0; height: 1px;
   background: linear-gradient(90deg, transparent, var(--border), transparent);
+  z-index: 2;
 }
 
 .invite-label {
@@ -93,6 +108,7 @@ body { background: var(--bg); font-family: 'Jost', sans-serif; color: var(--deep
   font-weight: 300; color: var(--teal); margin-bottom: 40px;
   animation: fadeIn 1s ease both;
 }
+
 
 .couple-names {
   font-family: 'Great Vibes', cursive;
